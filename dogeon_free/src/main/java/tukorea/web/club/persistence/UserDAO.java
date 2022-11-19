@@ -67,7 +67,7 @@ public class UserDAO {
 
 	public boolean update(UserVO vo) {
 		connect();
-		String sql = "update user set passwd = ?, username = ?, anum = ?, mobile = ?, email = ?, usertype = ? where id = ?";
+		String sql = "update user set passwd = ?, username = ?, anum = ?, mobile = ?, email = ?, usertype = ? where userid = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getPasswd());
@@ -133,7 +133,7 @@ public class UserDAO {
 	public ArrayList<UserVO> getUserList() {
 		connect();
 		ArrayList<UserVO> userList = new ArrayList<UserVO>();
-		String sql = "select * from user ";
+		String sql = "select * from user";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
