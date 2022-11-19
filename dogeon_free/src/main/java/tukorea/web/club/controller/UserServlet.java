@@ -61,7 +61,9 @@ public class UserServlet extends HttpServlet {
 			request.setAttribute("userList", userList);
 			RequestDispatcher view = request.getRequestDispatcher("user_list.jsp");
 			view.forward(request, response);
-		} else if (cmdReq.equals("update")) {
+		}
+		
+		else if (cmdReq.equals("update")) {
 			UserDAO dao = new UserDAO();
 			UserVO user = dao.read(request.getParameter("userid"));
 			request.setAttribute("user", user);
@@ -95,9 +97,10 @@ public class UserServlet extends HttpServlet {
 			userVO.setMobile(request.getParameter("mobile"));
 			userVO.setEmail(request.getParameter("email"));
 			userVO.setUsertype(Integer.parseInt(request.getParameter("usertype")));
-			UserDAO userDao = new UserDAO();
 
-			if (userDao.add(userVO))
+			UserDAO userDAO = new UserDAO();
+
+			if (userDAO.add(userVO))
 				message = "가입 축하합니다";
 			else
 				message = "가입 실패입니다";
