@@ -9,7 +9,7 @@ public class UserVO {
 	private String mobile;
 	private String email;
 	//0 = admin, 1 = common
-	private int userType;
+	private int usertype;
 	
 	public String getPasswd() {
 		return passwd;
@@ -41,11 +41,11 @@ public class UserVO {
 	public void setAnum(String anum) {
 		this.anum = anum;
 	}
-	public int getUserType() {
-		return userType;
+	public int getUsertype() {
+		return usertype;
 	}
-	public void setUserType(int userType) {
-		this.userType = userType;
+	public void setUsertype(int usertype) {
+		this.usertype = usertype;
 	}
 	public String getUserid() {
 		return userid;
