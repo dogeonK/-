@@ -130,10 +130,10 @@ public class UserDAO {
 		return true;
 	}
 
-	public ArrayList<UserVO> getStudentList() {
+	public ArrayList<UserVO> getUserList() {
 		connect();
-		ArrayList<UserVO> userlist = new ArrayList<UserVO>();
-		String sql = "select * from student ";
+		ArrayList<UserVO> userList = new ArrayList<UserVO>();
+		String sql = "select * from user ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
@@ -146,7 +146,7 @@ public class UserDAO {
 				vo.setMobile(rs.getString("mobile"));
 				vo.setEmail(rs.getString("email"));
 				vo.setUsertype(rs.getInt("usertype"));
-				userlist.add(vo);
+				userList.add(vo);
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -154,6 +154,6 @@ public class UserDAO {
 		} finally {
 			disconnect();
 		}
-		return userlist;
+		return userList;
 	}
 }
