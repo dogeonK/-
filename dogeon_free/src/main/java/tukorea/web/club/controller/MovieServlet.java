@@ -127,7 +127,7 @@ public class MovieServlet extends HttpServlet {
 
 			request.setAttribute("greetings", message);
 			request.setAttribute("movie", movieVO);
-
+			
 			RequestDispatcher view = request.getRequestDispatcher("movie_result.jsp");
 			view.forward(request, response);
 		}
