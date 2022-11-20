@@ -26,13 +26,13 @@
 						value=<%=user.getPasswd()%> autofocus></li>
 					<li>USERNAME : <input type="text" name="username"
 						value=<%=user.getUsername()%>></li>
-					<li>ACCOUNTNUMBER : <input type="text" name="snum"
+					<li>ACCOUNTNUMBER : <input type="text" name="anum"
 						value=<%=user.getAnum()%>></li>
 					<li>MOBILE : <input type="text" name="mobile"
 						value=<%=user.getMobile()%>></li>
 					<li>EMAIL : <input type="text" name="email"
 						value=<%=user.getEmail()%>></li>
-					<li>USERTYPE : <input type="text" name="depart"
+					<li>USERTYPE : <input type="text" name="usertype"
 						value=<%=user.getUsertype()%>></li>
 				</ul>
 			</fieldset>
