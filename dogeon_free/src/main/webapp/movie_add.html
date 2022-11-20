@@ -2,9 +2,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Web Service Programming Homework</title>
+<link rel="stylesheet" href="resources/student.css" type="text/css"></link>
 </head>
 <body>
+	<header>상영 영화 추가</header>
 
+	<div>
+		<form
+			action="http://localhost:8080/dogeon_free/MovieServlet?cmd=join"
+			method="post">
+
+			<fieldset>
+				<legend>Movie Information</legend>
+				<ul>
+					<li>Movie ID : <input type="text" name="movieid" autofocus required
+						placeholder="공백없이 입력하세요"></li>
+					<li>Movie Name : <input type="text" name="moviename" required
+						placeholder="공백없이 입력하세요"></li>
+					<li>Movie Genre : <input type="text" name="moviegenre" required
+						placeholder="공백없이 입력하세요"></li>
+					<li>Room : <input type="text" name="room" required
+						placeholder="공백없이 입력하세요"></li>
+					<li>Movie Time : <input type="text" name="movietime" required
+						placeholder="00:00 ~ 00:00"></li>
+				</ul>
+			</fieldset>
+			<br>
+			<fieldset>
+				<input type="submit" name="submit" value="보내기"> <input
+					type="reset" name="reset" value="다시 작성">
+			</fieldset>
+		</form>
+	</div>
 </body>
 </html>
