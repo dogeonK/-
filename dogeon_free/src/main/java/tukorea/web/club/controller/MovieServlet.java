@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tukorea.web.club.domain.MovieVO;
-import tukorea.web.club.persistence.MovieDAO;
+import tukorea.web.club.service.MovieService;
 
 
 /**
@@ -45,27 +45,27 @@ public class MovieServlet extends HttpServlet {
 		if (cmdReq.equals("join")) {
 			response.sendRedirect("movie_add.html");
 		} else if (cmdReq.equals("list")) {
-			MovieDAO dao = new MovieDAO();
-			ArrayList<MovieVO> movieList = dao.getMovieList();
+			MovieService service = new MovieService();
+			ArrayList<MovieVO> movieList = service.getAllMovie();
 			request.setAttribute("movieList", movieList);
 			RequestDispatcher view = request.getRequestDispatcher("movie_list.jsp");
 			view.forward(request, response);
 		}
 
 		else if (cmdReq.equals("delete")) {
-			MovieDAO dao = new MovieDAO();
+			MovieService service = new MovieService();
 			String strId = request.getParameter("movieid");
-			dao.delete(strId);
+			service.deleteMovie(strId);
 
-			ArrayList<MovieVO> movieList = dao.getMovieList();
+			ArrayList<MovieVO> movieList = service.getAllMovie();
 			request.setAttribute("movieList", movieList);
 			RequestDispatcher view = request.getRequestDispatcher("movie_list.jsp");
 			view.forward(request, response);
 		}
 		
 		else if (cmdReq.equals("update")) {
-			MovieDAO dao = new MovieDAO();
-			MovieVO movie = dao.read(request.getParameter("movieid"));
+			MovieService service = new MovieService();
+			MovieVO movie = service.readMovie(request.getParameter("movieid"));
 			request.setAttribute("movie", movie);
 
 			RequestDispatcher view = request.getRequestDispatcher("movie_update.jsp");
@@ -96,9 +96,9 @@ public class MovieServlet extends HttpServlet {
 			movieVO.setRoom(request.getParameter("room"));
 			movieVO.setMovietime(request.getParameter("movietime"));
 
-			MovieDAO movieDAO = new MovieDAO();
+			MovieService service = new MovieService();
 
-			if (movieDAO.add(movieVO))
+			if (service.addMovie(movieVO))
 				message = "영화 등록에 성공하였습니다.";
 			else
 				message = "영화 등록에 실패하였습니다.";
@@ -118,9 +118,9 @@ public class MovieServlet extends HttpServlet {
 			movieVO.setRoom(request.getParameter("room"));
 			movieVO.setMovietime(request.getParameter("movietime"));
 			
-			MovieDAO dao = new MovieDAO();
+			MovieService service = new MovieService();
 			
-			if (dao.update(movieVO))
+			if (service.updateMovie(movieVO))
 				message = "영화 수정이 완료되었습니다.";
 			else
 				message = "영화 수정이 실패되었습니다.";
