@@ -2,17 +2,17 @@ package tukorea.web.club.domain;
 
 public class ReservationVO {
 
-	private String reservid;
+	private String reserveid;
 	private String username;
 	private String movieid;
 	private String moviename;
 	private String seatnumber;
 	
-	public String getReservid() {
-		return reservid;
+	public String getReserveid() {
+		return reserveid;
 	}
-	public void setReservid(String reservid) {
-		this.reservid = reservid;
+	public void setReserveid(String reserveid) {
+		this.reserveid = reserveid;
 	}
 	public String getUsername() {
 		return username;
