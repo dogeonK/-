@@ -12,8 +12,8 @@
 	<header> Member List </header>
 	<hr>
 	<div>
-		<a href="http://localhost:8080/dogeon_free/welcome.html"
-			target="_self">메인 페이지 이동 </a>
+		<a href="http://localhost:8080/dogeon_free/welcome.jsp" target="_self">메인
+			페이지 이동 </a>
 		<table>
 			<tr>
 				<td>계정</td>
@@ -30,25 +30,41 @@
 			for (UserVO vo : userList) {
 			%>
 			<tr>
-				<td><%= vo.getUserid()%></td>
-				<td><%= vo.getUsername()%></td>
-				<td><%= vo.getAnum() %></td>
-				<td><%= vo.getMobile() %></td>
-				<td><%= vo.getEmail() %></td>
-				<% pageContext.setAttribute("type", vo.getUsertype()); %>
-				<td>
-					<c:if test="${type == 0}">
+				<td><%=vo.getUserid()%></td>
+				<td><%=vo.getUsername()%></td>
+				<td><%=vo.getAnum()%></td>
+				<td><%=vo.getMobile()%></td>
+				<td><%=vo.getEmail()%></td>
+				<%
+				pageContext.setAttribute("type", vo.getUsertype());
+				pageContext.setAttribute("userid", vo.getUserid());
+				pageContext.setAttribute("loginId", session.getAttribute("loginId"));
+				pageContext.setAttribute("admin", session.getAttribute("admin"));
+				%>
+				<td><c:if test="${type == 0}">
 						관리자
-					</c:if>
-					<c:if test="${type == 1}">
+					</c:if> <c:if test="${type == 1}">
 						회원
-					</c:if>
-				</td>
-				<td><a
-					href="http://localhost:8080/dogeon_free/UserServlet?cmd=update&userid=<%=vo.getUserid()%>"
-					target="_self"> 수정</a> <a
-					href="http://localhost:8080/dogeon_free/UserServlet?cmd=delete&userid=<%=vo.getUserid()%>"
-					target="_self"> 삭제</a></td>
+					</c:if></td>
+
+				<td><c:if test="${admin}">
+						<a
+							href="http://localhost:8080/dogeon_free/UserServlet?cmd=update&userid=<%=vo.getUserid()%>"
+							target="_self"> 수정</a>
+						<a
+							href="http://localhost:8080/dogeon_free/UserServlet?cmd=delete&userid=<%=vo.getUserid()%>"
+							target="_self"> 삭제</a></td>
+				</c:if>
+
+				<c:if test="${loginId == userid && !admin}">
+					<a
+						href="http://localhost:8080/dogeon_free/UserServlet?cmd=update&userid=<%=vo.getUserid()%>"
+						target="_self"> 수정</a>
+					<a
+						href="http://localhost:8080/dogeon_free/UserServlet?cmd=delete&userid=<%=vo.getUserid()%>"
+						target="_self"> 삭제</a>
+					</td>
+				</c:if>
 			</tr>
 			<%
 			}

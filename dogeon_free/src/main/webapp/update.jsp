@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="tukorea.web.club.domain.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,8 @@
 			<fieldset>
 				<legend>Information Update</legend>
 				<ul>
-					<li>ID : <input type="text" name="userid" value=<%=user.getUserid()%>
-						readonly></li>
+					<li>ID : <input type="text" name="userid"
+						value=<%=user.getUserid()%> readonly></li>
 					<li>PASSWORD : <input type="password" name="passwd"
 						value=<%=user.getPasswd()%> autofocus></li>
 					<li>USERNAME : <input type="text" name="username"
@@ -32,8 +33,11 @@
 						value=<%=user.getMobile()%>></li>
 					<li>EMAIL : <input type="text" name="email"
 						value=<%=user.getEmail()%>></li>
+					<%pageContext.setAttribute("admin", session.getAttribute("admin"));%>
+					<c:if test="${admin}">
 					<li>USERTYPE : <input type="text" name="usertype"
 						value=<%=user.getUsertype()%>></li>
+					</c:if>
 				</ul>
 			</fieldset>
 			<br>

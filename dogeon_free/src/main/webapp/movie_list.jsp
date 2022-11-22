@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="tukorea.web.club.domain.*, java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,8 @@
 	<header> Movie List </header>
 	<hr>
 	<div>
-		<a href="http://localhost:8080/dogeon_free/welcome.html"
-			target="_self">메인 페이지 이동 </a>
+		<a href="http://localhost:8080/dogeon_free/welcome.jsp" target="_self">메인
+			페이지 이동 </a>
 		<table>
 			<tr>
 				<td>영화 이름</td>
@@ -23,6 +24,8 @@
 			</tr>
 
 			<%
+			pageContext.setAttribute("loginId", session.getAttribute("loginId"));
+			pageContext.setAttribute("admin", session.getAttribute("admin"));
 			List<MovieVO> movieList = (List<MovieVO>) request.getAttribute("movieList");
 			for (MovieVO vo : movieList) {
 			%>
@@ -31,11 +34,18 @@
 				<td><%=vo.getMoviegenre()%></td>
 				<td><%=vo.getRoom()%></td>
 				<td><%=vo.getMovietime()%></td>
-				<td><a
-					href="http://localhost:8080/dogeon_free/MovieServlet?cmd=update&movieid=<%=vo.getMovieid()%>"
-					target="_self"> 수정</a> <a
-					href="http://localhost:8080/dogeon_free/MovieServlet?cmd=delete&movieid=<%=vo.getMovieid()%>"
-					target="_self"> 삭제</a></td>
+				<td><c:if test="${loginId != null}">
+						<a
+							href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=reserve&movieid=<%=vo.getMovieid()%>"
+							target="_self"> 예매</a>
+					</c:if> <c:if test="${admin}">
+						<a
+							href="http://localhost:8080/dogeon_free/MovieServlet?cmd=update&movieid=<%=vo.getMovieid()%>"
+							target="_self"> 수정</a>
+						<a
+							href="http://localhost:8080/dogeon_free/MovieServlet?cmd=delete&movieid=<%=vo.getMovieid()%>"
+							target="_self"> 삭제</a>
+					</c:if></td>
 			</tr>
 			<%
 			}

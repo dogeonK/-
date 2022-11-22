@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Web Service Programming Homework</title>
+<link rel="stylesheet" href="resources/student.css" type="text/css"></link>
+</head>
+<body>
+	<header>Login Your Account</header>
+
+	<div>
+		<form
+			action="http://localhost:8080/dogeon_free/UserServlet?cmd=login"
+			method="post">
+
+			<fieldset>
+				<ul>
+					<li>ID : <input type="text" name="userid" autofocus required
+						placeholder="공백없이 입력하세요"></li>
+					<li>PASSWORD : <input type="password" name="passwd" required
+						placeholder="공백없이 입력하세요"></li>
+				</ul>
+			</fieldset>
+			<br>
+			<fieldset>
+				<input type="submit" name="submit" value="확인"> <input
+					type="reset" name="reset" value="다시 작성">
+			</fieldset>
+		</form>
+		<a href="http://localhost:8080/dogeon_free/welcome.jsp"
+			target="_self">메인 페이지 이동 </a>
+	</div>
+</body>
+</html>
