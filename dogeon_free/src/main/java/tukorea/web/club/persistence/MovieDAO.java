@@ -44,7 +44,7 @@ public class MovieDAO {
 
 	public boolean add(MovieVO vo) {
 		connect();
-		String sql = "insert into user values (?,?,?,?,?)";
+		String sql = "insert into movie values (?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMovieid());
