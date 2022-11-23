@@ -36,7 +36,7 @@
 				<td><%=vo.getMovietime()%></td>
 				<td><c:if test="${loginId != null}">
 						<a
-							href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=reserve&movieid=<%=vo.getMovieid()%>"
+							href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=reservation&movieid=<%=vo.getMovieid()%>"
 							target="_self"> 예매</a>
 					</c:if> <c:if test="${admin}">
 						<a
@@ -51,6 +51,10 @@
 			}
 			%>
 		</table>
+		<a href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=list" target="_self">예매 목록보기</a><br>
+		<c:if test="${admin}">
+		<a href="http://localhost:8080/dogeon_free/movie_add.html" target="_self">상영 영화 추가하기 </a>
+		</c:if>
 	</div>
 </body>
 </html>
