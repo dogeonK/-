@@ -141,6 +141,9 @@ public class UserServlet extends HttpServlet {
 			if(service.isAdmin(request.getParameter("userid"))) {
 				userVO.setUsertype(Integer.parseInt(request.getParameter("usertype")));
 			}
+			else {
+				userVO.setUsertype(1);
+			}
 			
 			
 			

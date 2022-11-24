@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Web Service Programming Homework</title>
-<link rel="stylesheet" href="resources/student.css" type="text/css"></link>
+<link rel="stylesheet" href="resources/cinema.css" type="text/css"></link>
 </head>
 <body>
 	<header>Login Your Account</header>
+	<hr>
 
 	<div>
 		<form
@@ -14,9 +15,9 @@
 			method="post">
 
 			<fieldset>
-				<ul>
+				<ul class=update>
 					<li>ID : <input type="text" name="userid" autofocus required
-						placeholder="공백없이 입력하세요"></li>
+						placeholder="공백없이 입력하세요"></li><br>
 					<li>PASSWORD : <input type="password" name="passwd" required
 						placeholder="공백없이 입력하세요"></li>
 				</ul>
@@ -27,7 +28,7 @@
 					type="reset" name="reset" value="다시 작성">
 			</fieldset>
 		</form>
-		<a href="http://localhost:8080/dogeon_free/welcome.jsp"
+		<a class='manage' href="http://localhost:8080/dogeon_free/welcome.jsp"
 			target="_self">메인 페이지 이동 </a>
 	</div>
 </body>
