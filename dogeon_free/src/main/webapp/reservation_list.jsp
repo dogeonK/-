@@ -77,20 +77,26 @@
 				pageContext.setAttribute("userid", vo.getUserid());
 			%>
 			<tr>
-				<td><%=vo.getReserveid()%></td>
-				<td><%=vo.getUserid()%></td>
-				<td><%=vo.getMovieid()%></td>
-				<td><%=vo.getMoviename()%></td>
-				<td><%=vo.getSeatnumber()%></td>
-				<td><c:if test="${loginId == userid && !admin}">
-						<a class='manage'
-							href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=delete&reserveid=<%=vo.getReserveid()%>"
-							target="_self"> 예매 취소</a>
-					</c:if> <c:if test="${admin}">
-						<a class='manage'
-							href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=delete&reserveid=<%=vo.getReserveid()%>"
-							target="_self"> 예매 취소</a>
-					</c:if></td>
+				<c:if test="${loginId == userid && !admin}">
+					<td><%=vo.getReserveid()%></td>
+					<td><%=vo.getUserid()%></td>
+					<td><%=vo.getMovieid()%></td>
+					<td><%=vo.getMoviename()%></td>
+					<td><%=vo.getSeatnumber()%></td>
+					<td><a class='manage'
+						href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=delete&reserveid=<%=vo.getReserveid()%>"
+						target="_self"> 예매 취소</a>
+				</c:if>
+				<c:if test="${admin}">
+					<td><%=vo.getReserveid()%></td>
+					<td><%=vo.getUserid()%></td>
+					<td><%=vo.getMovieid()%></td>
+					<td><%=vo.getMoviename()%></td>
+					<td><%=vo.getSeatnumber()%></td>
+					<td><a class='manage'
+						href="http://localhost:8080/dogeon_free/ReservationServlet?cmd=delete&reserveid=<%=vo.getReserveid()%>"
+						target="_self"> 예매 취소</a></td>
+				</c:if>
 			</tr>
 			<%
 			}
